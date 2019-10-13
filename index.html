@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title> BMI calculator</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="css/base.css">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+				<link rel="shortcut icon" href="favicon.ico"/>
+
+        <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+
+       
+<div class="container">
+        <header>
+            
+        
+        <h1 class="logo" >BMI CALCULATOR</h1>
+        <button class="hm">H</button>
+        <div class="menu">
+
+            <nav>
+                <ul>
+                    <li><a href="#">Home </a></li>
+                    <li><a href="#">services</a></li>
+                    <li><a href="#">Volunteer</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+
+
+            </nav>
+
+        </div>            <!--  eo class menu -->
+
+
+        
+
+
+        </header>
+      
+
+    
+<div class="outer-form-wrap">
+
+    <div class="form-wrapper">
+
+             <div class="form-style-10">
+                <h1>Sign Up Now!<span>Calculate your BMI</span></h1>
+                    <form>
+                            <div class="section"><span>1</span>Your height  &amp; Weight</div>
+                            <div class="inner-wrap">
+
+                                  <label>Enter your weight ( in kilo gram )<input type="text" name="weight" id='weight' /></label>
+                                <label>Enter your height ( in Centimeter ) : <input type="text" name="height" id="height" /></label>
+                              
+                            </div>
+
+                    
+                                <div class="button-section" >
+                                 <input type="submit" name="total"  id="total" />
+                                  <input id="reset" type="reset" value="CLEAR">
+                     
+                                </div>
+                     </form>
+            </div>
+
+    </div>
+
+<div class="form-wrapper">
+
+     <div class="form-style-10 ">
+            <h1>Your BMI result is ready <span>Keep reading here</span></h1>
+                <div class="section"><span>2</div>
+                <div class=" inner-wrap red"> 
+                <p name="result" id='result2' > Dear user your BMI is : <span id='result'></span> </p>
+        
+                </div>
+
+                <div class="inner-wrap2 ">
+
+
+                <h2>Move mouse here ..</h2>
+                    
+                    <dl>
+
+                        <dt class='blue' >Underweight (if BMI is less then 18.5)</dt>
+                        <dd>hey ! you need to put on some weight</dd>
+                        <dt class='green'>Normal (if BMI is between 18.5 and 24.9)</dt>
+                        <dd>hey ! whats your secret food.</dd>
+                        <dt class='yellow'>Overweight (if BMI is between 25 and 29.9)</dt>
+                        <dd>hey! body loose some weight there.</dd>
+                        <dt class='red'>Obese (if BMI is equal or more then 30)</dt>
+                        <dd>hey ! you need to see some docter</dd>
+                        
+
+
+                    </dl>
+
+
+                </div>
+
+    
+    </div>
+    
+
+
+</div>
+
+  
+</div>
+
+
+        <div class="info">
+
+
+                <h2>What is BMI ?</h2>   
+
+
+                <p>Health is wealth, and Body mass index is a parameter, which can tell you if your body weight is proper according to your height. we provide here a simple BMI calculator for you, so you can check your BMI. </p>
+        
+
+        </div>
+
+
+
+
+
+        <footer>
+            
+
+        <p>copywrite@mydesign.com</p>
+
+
+
+        </footer>
+        
+
+
+   
+
+</div>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+        
+       
+
+        <script src="js/vendor/jquery-1.10.1.min.js"></script>
+
+        <script type="text/javascript">
+        $(document).ready(function(){
+
+        
+
+            $('#total').click(function( event ){
+
+          /* alert('your bmi is :');*/
+           var height = $('#height').val();
+           var weight = $('#weight').val();
+
+          height = height/100;
+
+          height = height * height ;
+
+          var bmi = weight/height ;
+
+
+
+           $('#result').html(bmi.toFixed(2));
+
+
+
+                 if(bmi<(18.5))
+                {
+                    $('#result2').removeClass('red green yellow');
+                    $('#result2').addClass('blue');
+                }
+                 else if(bmi==(18.5) || bmi<=(24.9)){
+                 	 $('#result2').removeClass('red blue yellow');
+                    $('#result2').addClass('green'); 
+                }
+
+                else if(bmi==(25) || bmi<=(29.9)){
+                	$('#result2').removeClass('red blue green');
+                    $('#result2').addClass('yellow'); 
+                }
+
+                else if(bmi>=(30)){
+                	$('#result2').removeClass('green blue yellow');
+                    $('#result2').addClass('red'); 
+                }
+
+           event.preventDefault();
+         
+          });                    /* BMI calculation ended here*/
+
+            var dd =$('dd');
+
+            dd.addClass('hide');
+
+            $('dl').on('click', 'dt' , function (){
+
+                var me = $(this);
+
+                me.siblings('dd').slideUp(300);
+
+                me.next().slideDown(300); 
+
+        /*         me.next().slideDown(300).delay(1000).slideUp(300);*/
+                
+            } );
+/*
+             $('dl').on('mouseleave', 'dt' , function (){
+
+                 $(this).next().slideUp(300);  
+
+                } );*/
+			
+		
+
+
+
+             $('.hm').click( function(){
+
+                var hm = $(this);
+
+                $('div.menu ul').slideToggle(300);
+
+
+
+             
+             });
+
+             	       $( window ).resize(function() {
+ 
+				    var sc = $(window).width();
+              if(sc>920)
+             	{
+             	$('div.menu ul').show();
+
+             	}
+				});
+
+        });
+
+
+        </script>
+
+
+
+      
+    </body>
+</html>
